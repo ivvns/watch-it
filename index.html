@@ -4,9 +4,38 @@
     <meta charset="UTF-8" />
     <link rel="icon" type="image/" href="" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <title>Watch-it | Movie and Shows</title>
   </head>
   <body>
+
+    <!-- Navigation & Search --> 
+    <header>
+      <div class="nav-container">
+        <nav class="nav-items">
+          <a href="/">
+            <h1>Watch-it</h1>
+          </a>
+          <ul>
+            <li><a href="/">Browse</a>
+            <li><a href="/movies/">Movies</a>
+            <li><a href="/shows/">Shows</a>
+          </ul>
+        </nav>
+  
+        <form action="/search/" class="search-form">
+          <div class="search">
+              <input type="text" id="search-input" class="search-input" placeholder="Enter a show or movie..." required>
+              <button class="submit-btn">
+                <i class="fa-solid fa-magnifying-glass"></i>
+              </button>
+          </div>
+        </form>
+      </div>
+    </header>
+
     <script type="module" src="/main.js"></script>
   </body>
 </html>
