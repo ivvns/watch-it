@@ -2,8 +2,18 @@
 @tailwind components;
 @tailwind utilities;
 
+/*
+|------------------------------------------
+|  Global
+|------------------------------------------
+*/
+
 body {
-    @apply bg-bgColor text-primaryColor;
+    @apply bg-bgColor text-primaryColor overflow-x-hidden;
+}
+
+img {
+    @apply w-full h-full object-cover object-center;
 }
 
 /*
@@ -36,7 +46,7 @@ header {
 }
 
 .nav-container ul li{
-    @apply text-sm px-2 transition ease-in-out hover:text-secondaryColor;
+    @apply text-sm px-2  font-light transition ease-in-out hover:text-secondaryColor hover:font-medium;
     @apply lg:p-4 lg:text-base;
 }
 
@@ -65,4 +75,59 @@ header {
 
 .search.active .submit-btn {
     transform: translateX(215px);
+}
+
+/*
+|------------------------------------------
+|  Hero Banner and Swiper
+|------------------------------------------
+*/
+
+.hero-banner {
+ @apply py-6 px-4 m-auto;
+ @apply md:w-9/12 md:p-0 md:pb-24;
+}
+
+.swiper {
+    @apply lg:w-[80%] lg:h-[500px];
+    @apply xl:h-[600px] xl:w-[88%];
+}
+
+.swiper-wrapper {
+    @apply relative;
+}
+
+.swiper-text {
+    @apply absolute bottom-0 left-0 bg-secondaryColor w-full p-2 opacity-90;
+    @apply md:p-4;
+}
+
+.swiper-text h3 {
+    @apply text-base md:text-lg;
+    @apply lg:text-xl font-medium;
+}
+
+.swiper-text p {
+    @apply text-xs font-light;
+    @apply md:text-base;
+}
+
+.soon-container {
+    @apply flex flex-col items-center pt-6; 
+    @apply lg:flex-none lg:w-[20%] lg:pl-6 lg:m-auto lg:pt-0;
+    @apply xl:w-[12%]
+}
+
+.soon-card {
+    @apply mx-2;
+    @apply lg:mx-0 lg:mb-6;
+}
+
+.soon-card img {
+    @apply mb-2 h-[150px] object-cover object-center;
+}
+
+.soon-card p {
+    @apply text-xs;
+    @apply lg:text-base; 
 }
