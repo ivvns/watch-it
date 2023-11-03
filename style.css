@@ -199,11 +199,12 @@ header {
 }
 
 .search-wrapper {
-    @apply flex flex-wrap justify-center gap-6 w-full;
+    @apply flex flex-wrap justify-between gap-1 w-full;
+
 }
 
 .search-card {
-    @apply w-[300px] relative mb-4
+    @apply w-[200px] relative mb-4
 }
 
 .search-text {
