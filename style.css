@@ -16,6 +16,30 @@ img {
     @apply w-full h-full object-cover object-center;
 }
 
+.section-heading {
+    @apply text-2xl font-medium pb-6;
+}
+
+.sections {
+    @apply py-6 px-4 m-auto overflow-x-hidden;
+    @apply md:w-9/12 md:p-0 md:pb-24;
+}
+
+.slider-text {
+    @apply absolute bottom-0 left-0 bg-secondaryColor w-full p-2 opacity-90;
+    @apply md:p-4;
+}
+   
+.slider-text h3 {
+    @apply text-base md:text-lg;
+    @apply lg:text-xl font-medium;
+}
+   
+.slider-text p {
+    @apply text-xs font-light;
+    @apply md:text-base;
+}
+
 /*
 |------------------------------------------
 |  Header / Search Bar
@@ -88,26 +112,26 @@ header {
  @apply md:w-9/12 md:p-0 md:pb-24;
 }
 
-.swiper {
+.hero-swiper {
     @apply lg:w-[80%] lg:h-[500px];
     @apply xl:h-[600px] xl:w-[88%];
 }
 
-.swiper-wrapper {
+.hero-wrapper {
     @apply relative;
 }
 
-.swiper-text {
+.hero-text {
     @apply absolute bottom-0 left-0 bg-secondaryColor w-full p-2 opacity-90;
     @apply md:p-4;
 }
 
-.swiper-text h3 {
+.hero-text h3 {
     @apply text-base md:text-lg;
     @apply lg:text-xl font-medium;
 }
 
-.swiper-text p {
+.hero-text p {
     @apply text-xs font-light;
     @apply md:text-base;
 }
@@ -130,4 +154,33 @@ header {
 .soon-card p {
     @apply text-xs;
     @apply lg:text-base; 
+}
+
+/*
+|------------------------------------------
+|  Trending Movies &  Trending Shows
+|------------------------------------------
+*/
+   
+.trending-swiper {
+    @apply h-[350px];
+}
+   
+.trending-wrapper {
+    @apply relative;
+}
+   
+
+/*
+|------------------------------------------
+|  Now playing
+|------------------------------------------
+*/
+
+.playing-swiper {
+    @apply h-[400px];
+}
+
+.trending-wrapper {
+    @apply relative;
 }

@@ -6,6 +6,8 @@ export default defineConfig({
     rollupOptions: {
       input: {
         main: resolve(__dirname, 'index.html'),
+        movies: resolve(__dirname, 'index.html'),
+        shows: resolve(__dirname, 'index.html'),
       },
     },
   },
