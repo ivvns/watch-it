@@ -2,6 +2,9 @@
 export default {
   content: [
     "./index.html",
+    "./movies/index.html",
+    "./shows/index.html",
+    "./search/index.html",
     "./*.{js}",
   ],
   screen: {

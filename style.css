@@ -25,21 +25,6 @@ img {
     @apply md:w-9/12 md:p-0 md:pb-24;
 }
 
-.slider-text {
-    @apply absolute bottom-0 left-0 bg-secondaryColor w-full p-2 opacity-90;
-    @apply md:p-4;
-}
-   
-.slider-text h3 {
-    @apply text-base md:text-lg;
-    @apply lg:text-xl font-medium;
-}
-   
-.slider-text p {
-    @apply text-xs font-light;
-    @apply md:text-base;
-}
-
 /*
 |------------------------------------------
 |  Header / Search Bar
@@ -108,18 +93,15 @@ header {
 */
 
 .hero-banner {
- @apply py-6 px-4 m-auto;
+ @apply py-6 px-4 m-auto overflow-hidden;
  @apply md:w-9/12 md:p-0 md:pb-24;
 }
 
 .hero-swiper {
     @apply lg:w-[80%] lg:h-[500px];
-    @apply xl:h-[600px] xl:w-[88%];
+    @apply xl:h-[500px] xl:w-[88%];
 }
 
-.hero-wrapper {
-    @apply relative;
-}
 
 .hero-text {
     @apply absolute bottom-0 left-0 bg-secondaryColor w-full p-2 opacity-90;
@@ -137,8 +119,8 @@ header {
 }
 
 .soon-container {
-    @apply flex flex-col items-center pt-6; 
-    @apply lg:flex-none lg:w-[20%] lg:pl-6 lg:m-auto lg:pt-0;
+    @apply flex flex-col items-center pt-6 z-10 bg-bgColor; 
+    @apply lg:flex-none lg:w-[20%] lg:pl-6 lg:pt-0 lg:justify-center;
     @apply xl:w-[12%]
 }
 
@@ -158,13 +140,34 @@ header {
 
 /*
 |------------------------------------------
+|  Classic Sliders
+|------------------------------------------
+*/
+
+.slider-text {
+    @apply absolute bottom-0 left-0 bg-secondaryColor w-full p-2 opacity-90;
+    @apply md:p-4;
+}
+   
+.slider-text h3 {
+    @apply text-base md:text-lg;
+    @apply lg:text-xl font-medium;
+}
+   
+.slider-text p {
+    @apply text-xs font-light;
+    @apply md:text-base;
+}
+
+.classic-swiper {
+    @apply lg:h-[350px];
+}
+
+/*
+|------------------------------------------
 |  Trending Movies &  Trending Shows
 |------------------------------------------
 */
-   
-.trending-swiper {
-    @apply h-[350px];
-}
    
 .trending-wrapper {
     @apply relative;
@@ -178,9 +181,33 @@ header {
 */
 
 .playing-swiper {
-    @apply h-[400px];
+    @apply lg:h-[400px];
 }
 
 .trending-wrapper {
     @apply relative;
 }
+
+/*
+|------------------------------------------
+|  Search Page
+|------------------------------------------
+*/
+
+.search-heading {
+    @apply text-5xl font-bold text-center pb-10;
+}
+
+.search-wrapper {
+    @apply flex flex-wrap justify-center gap-6 w-full;
+}
+
+.search-card {
+    @apply w-[300px] relative mb-4
+}
+
+.search-text {
+    @apply absolute bottom-0 left-0 bg-secondaryColor w-full p-2 opacity-90;
+    @apply md:p-4;
+}
+

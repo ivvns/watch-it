@@ -5,7 +5,7 @@ import 'swiper/css';
 
 
 // init swiper
-const swiper = new Swiper('.swiper', {
+const heroSwiper = new Swiper('.hero-swiper', {
     modules: [Navigation, Autoplay],
 
     breakpoints: {
@@ -18,7 +18,7 @@ const swiper = new Swiper('.swiper', {
             spaceBetween: 30,
         },
         1024: {
-            slidesPerView: 3,
+            slidesPerView: 2,
             spaceBetween: 40,
         },
     },
@@ -32,7 +32,7 @@ const swiper = new Swiper('.swiper', {
 
 });
 
-const trendingSwiper = new Swiper('.trending-swiper', {
+const classicSwiper = new Swiper('.classic-swiper', {
     modules: [Navigation],
 
     breakpoints: {
