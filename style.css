@@ -83,7 +83,7 @@ header {
 }
 
 .search.active .submit-btn {
-    transform: translateX(215px);
+    transform: translateX(-52px);
 }
 
 /*
@@ -99,7 +99,7 @@ header {
 
 .hero-swiper {
     @apply lg:w-[80%] lg:h-[500px];
-    @apply xl:h-[500px] xl:w-[88%];
+    @apply xl:h-[500px] xl:w-[90%];
 }
 
 
@@ -120,8 +120,8 @@ header {
 
 .soon-container {
     @apply flex flex-col items-center pt-6 z-10 bg-bgColor; 
-    @apply lg:flex-none lg:w-[20%] lg:pl-6 lg:pt-0 lg:justify-center;
-    @apply xl:w-[12%]
+    @apply lg:flex-none lg:w-[20%] lg:pl-6 lg:pt-0 lg:items-end;
+    @apply xl:w-[10%]
 }
 
 .soon-card {
@@ -135,7 +135,7 @@ header {
 
 .soon-card p {
     @apply text-xs;
-    @apply lg:text-base; 
+    @apply lg:text-sm; 
 }
 
 /*
