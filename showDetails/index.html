@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Show Detail</title>
+</head>
+<body>
+  
+  <!-- Navigation & Search --> 
+  <header>
+    <div class="nav-container">
+      <nav class="nav-items">
+        <a href="/">
+          <h1>Watch-it</h1>
+        </a>
+        <ul>
+          <li><a href="/">Browse</a>
+          <li><a href="/movies/">Movies</a>
+          <li><a href="/shows/">Shows</a>
+        </ul>
+      </nav>
+      <!-- Search --> 
+      <form action="/search/" class="search-form">
+        <div class="search">
+            <input type="text" id="search-input" class="search-input" placeholder="Enter a show or movie..." required>
+            <button class="submit-btn">
+              <i class="fa-solid fa-magnifying-glass"></i>
+            </button>
+        </div>
+      </form>
+    </div>
+  </header>
+
+  <!-- Show Details -->
+  <section class="details">
+    <div class="back"><a href="/shows/"><i class="fa-solid fa-arrow-left"></i> Back to shows</a></div>
+    <div>
+      <div class="details-bgimg"></div>
+      <div class="movie-details">
+        <div class="details-image">
+          <img src="/placeholder.jpg" alt="">
+        </div>
+        <div>
+          <h2 class="text-3xl font-bold">Five Night's At Freddy's</h2>
+          <p class="text-lg pb-2">10 / 10 <i class="fa-regular fa-star"></i></span></p>
+          <div class="flex">
+            <p class="pr-4 text-base">Last Air Date:</p>
+            <p>Number of Episodes:</p>
+          </div>
+          <ul class="genres flex pb-4">
+            <li class="pr-2">Horror</li>
+            <li>Mystery</li>
+          </ul>
+          <p class="text-lg pb-4 font-semibold">Recently fired and desperate for work, a troubled young man named Mike agrees to take a position as a night security guard at an abandoned theme restaurant: Freddy Fazbear's Pizzeria. But he soon discovers that nothing at Freddy's is what it seems.</p>
+          <p>Produced by: Brimhouse Production</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="py-10">
+    <p class="text-center">&copy; 2023 Watch-it by Ivan Somera</p>
+  </footer>
+  <script type="module" src="/main.js"></script>
+
+</body>
+</html>
