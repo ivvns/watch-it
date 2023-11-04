@@ -33,7 +33,7 @@ const heroSwiper = new Swiper('.hero-swiper', {
 });
 
 const classicSwiper = new Swiper('.classic-swiper', {
-    modules: [Navigation],
+    modules: [Navigation, Autoplay],
 
     breakpoints: {
         320: {
@@ -50,12 +50,11 @@ const classicSwiper = new Swiper('.classic-swiper', {
         },
     },
 
-    navigation: {
-        nextEl: '.swiper-button-next',
-        prevEl: '.swiper-button-prev',
-    },
-
     direction: 'horizontal',
     loop: true,
+
+    autoplay: {
+        delay: 1000,
+    },
 
 });

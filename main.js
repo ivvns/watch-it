@@ -7,16 +7,6 @@ const global = {
     currentPage: window.location.pathname,
 };
 
-const search = document.querySelector('.search')
-const submitBtn = document.querySelector('.submit-btn')
-const searchInput = document.querySelector('.search-input')
-
-
-submitBtn.addEventListener('click', () => {
-    search.classList.toggle('active')
-    searchInput.focus()
-})
-
 // Fetch data from TMDB Api
 async function fetchAPIData(endpoint) {
     const API_KEY = '231dc6c02f8052f41c9a7eab739d777b';
@@ -137,7 +127,7 @@ async function displayMovieDetails() {
     const div = document.createElement('div');
 
     div.innerHTML = `
-    <div class="movie-details">
+    <div class="details-container">
       <div class="details-image">
       ${
         movie.poster_path
@@ -145,19 +135,19 @@ async function displayMovieDetails() {
          : `<img src="/placeholder.jpg" alt="${movie.title}">`
       }
       </div>
-      <div>
-        <h2 class="text-3xl font-bold">${movie.title}</h2>
-        <p class="text-lg pb-2">${movie.vote_average.toFixed(1)} / 10 <i class="fa-regular fa-star"></i></span></p>
-        <div class="flex">
-            <p class="pr-4">${movie.release_date}</p>
+      <div class="details-content">
+        <h2 class="title">${movie.title}</h2>
+        <p class="rating">${movie.vote_average.toFixed(1)} / 10 <i class="fa-regular fa-star"></i></span></p>
+        <div class="release-runtime">
+            <p class="padding-right">${movie.release_date}</p>
             <p>${movie.runtime} minutes</p>
         </div>
-        <ul class="flex pb-4">
-            ${movie.genres.map((genre) => `<li class="pr-2">${genre.name}</li>`).join('')}
+        <ul class="genres">
+            ${movie.genres.map((genre) => `<li class="padding-right">${genre.name}</li>`).join('')}
         </ul>
-        <p class="text-lg pb-4 font-semibold">${movie.overview}</p>
-        <ul class="flex">
-            ${movie.production_companies.map((company) => `<li class="pr-2">${company.name}</li>`).join('')}
+        <p class="overview">${movie.overview}</p>
+        <ul class="production">
+            ${movie.production_companies.map((company) => `<li class="padding-right">${company.name}</li>`).join('')}
         </ul>
         <p>Budget: $${addCommasToNumber(movie.budget)}</p>
       </div>
@@ -270,7 +260,7 @@ async function displayShowDetails() {
     const div = document.createElement('div');
 
     div.innerHTML = `
-    <div class="movie-details">
+    <div class="details-container">
       <div class="details-image">
       ${
         show.poster_path
@@ -278,20 +268,20 @@ async function displayShowDetails() {
          : `<img src="/placeholder.jpg" alt="${show.name}">`
       }
       </div>
-      <div>
-        <h2 class="text-3xl font-bold">${show.name}</h2>
-        <p class="text-lg pb-2">${show.vote_average.toFixed(1)} / 10 <i class="fa-regular fa-star"></i></span></p>
-        <p class="pr-4 text-base">Last Air Date: ${show.last_air_date}</p>
-        <ul class="flex">
-          <li class="pr-2"> ${show.number_of_seasons}  Seasons</li>
+      <div class='details-content'>
+        <h2 class="title">${show.name}</h2>
+        <p class="rating">${show.vote_average.toFixed(1)} / 10 <i class="fa-regular fa-star"></i></span></p>
+        <p class="air-date">Last Air Date: ${show.last_air_date}</p>
+        <ul class="ep-seasons">
+          <li class="padding-right"> ${show.number_of_seasons} Seasons</li>
           <li> ${show.number_of_episodes} Episodes</li>
         </ul>
-        <ul class="flex pb-4">
-            ${show.genres.map((genre) => `<li class="pr-2">${genre.name}</li>`).join('')}
+        <ul class="genres">
+            ${show.genres.map((genre) => `<li class="padding-right">${genre.name}</li>`).join('')}
         </ul>
-        <p class="text-lg pb-4 font-semibold">${show.overview}</p>
-        <ul class="flex">
-            ${show.production_companies.map((company) => `<li class="pr-2">${company.name}</li>`).join('')}
+        <p class="overview">${show.overview}</p>
+        <ul class="production">
+            ${show.production_companies.map((company) => `<li class="padding-right">${company.name}</li>`).join('')}
         </ul>
       </div>
     </div>
@@ -321,6 +311,7 @@ function displayBackgroundImage(type, backgroundPath) {
         document.querySelector('#show-details').appendChild(overlayDiv);
     }
 }
+
 
 function showSpinner() {
     document.querySelector('.spinner').classList.add('show');
@@ -370,8 +361,8 @@ function init() {
         case'/showDetails/index.html':
             displayShowDetails();
             break;
-        case'/search/':
-        console.log('search page');
+        case'/search/index.html':
+            search();
             break;
     }
 

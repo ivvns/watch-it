@@ -6,29 +6,43 @@
     <title>Search</title>
 </head>
 <body>
+
   <!-- Navigation & Search --> 
   <header>
-      <div class="nav-container">
-        <nav class="nav-items">
-          <a href="/">
-            <h1>Watch-it</h1>
-          </a>
-          <ul>
-            <li><a href="/">Browse</a>
-            <li><a href="/movies/">Movies</a>
-            <li><a href="/shows/">Shows</a>
-          </ul>
-        </nav>
-        <!-- Search --> 
-        <form action="/search/" class="search-form">
-          <div class="search">
-              <input type="text" id="search-input" class="search-input" placeholder="Enter a show or movie..." required>
-              <button class="submit-btn">
-                <i class="fa-solid fa-magnifying-glass"></i>
-              </button>
-          </div>
-        </form>
-      </div>
+    <div class="nav-container">
+      <nav class="nav-items">
+        <a href="/">
+          <h1>Watch-it</h1>
+        </a>
+        <ul>
+          <li><a href="/" class="nav-link">Browse</a>
+          <li><a href="/movies/" class="nav-link">Movies</a>
+          <li><a href="/shows/" class="nav-link">Shows</a>
+        </ul>
+      </nav>
+      <!-- Search --> 
+      <form action="/search/index.html" class="search-form relative">
+        <div class="search-radio">
+          <input type="radio" name="type" id="movie" value="movie" checked />
+          <label for="movies">Movies</label>
+          <input type="radio" name="type" id="tv" value="tv"/>
+          <label for="movies">TV Shows</label>
+        </div>
+        <div class="search">
+            <input 
+              name="search-term"
+              type="text" 
+              id="search-input" 
+              class="search-input" 
+              placeholder="Enter a show or movie..." 
+              required
+            />
+            <button class="submit-btn" type="submit">
+              <i class="fa-solid fa-magnifying-glass"></i>
+            </button>
+        </div>
+      </form>
+    </div>
   </header>
 
   <section class="sections">

@@ -66,30 +66,28 @@ header {
 }
 
 .search {
-    @apply relative h-12;
+    @apply relative bg-primaryColor flex;
 }
 
 .search-input {
-   @apply bg-primaryColor border-0 text-base p-2 h-12 w-12 text-secondaryColor rounded-full;
-   transition: width 0.3s ease;
+   @apply bg-primaryColor border-0 text-base p-2  text-secondaryColor;
 }
 
 .submit-btn {
-  @apply bg-secondaryColor text-primaryColor text-2xl absolute top-0 left-0 h-12 w-12 rounded-full;
-  transition: transform 0.3s ease;
+  @apply bg-secondaryColor text-primaryColor text-2xl p-2;
+
 }
 
-.submit-btn:focus,
-.search-input:focus {
-    @apply outline-none;
+.search-radio {
+    @apply absolute bottom-[-30px];
 }
 
-.search.active .search-input {
-    @apply w-52;
+.search-radio label {
+    @apply pl-1 pr-2;
 }
 
-.search.active .submit-btn {
-    @apply transform translate-x-[-52px]; 
+input[type='radio'] {
+    @apply accent-secondaryColor;
 }
 
 /*
@@ -108,7 +106,6 @@ header {
     @apply overflow-hidden;
 
 }
-
 
 .hero-text {
     @apply absolute bottom-0 left-0 bg-secondaryColor w-full p-2 opacity-90;
@@ -201,11 +198,7 @@ header {
     @apply rounded-full p-2 bg-white hover:bg-secondaryColor hover:text-white transition ease-in-out;
 }
 
-.details-bgimg {
-    @apply bg-cover bg-center bg-no-repeat h-full w-full absolute top-0 left-0 z-[-1] opacity-10;
-    background-image: url(/public/placeholder.jpg);
-}
-.movie-details {
+.details-container {
     @apply flex;
 }
 
@@ -213,3 +206,43 @@ header {
     @apply w-[1200px] mr-12;
 }
 
+.details-content .title{
+    @apply text-3xl font-bold;
+}
+
+.details-content .rating {
+    @apply text-xl pb-2;
+}
+
+.details-content .padding-right {
+    @apply pr-4;
+}
+
+.details .genres {
+    @apply flex pb-4;
+}
+
+.details-content .air-date {
+    @apply pr-4 text-base;
+}
+
+.details-content .ep-seasons {
+    @apply flex;
+}
+
+
+.details .overview {
+    @apply text-lg pb-4 font-semibold;
+}
+
+.details .production {
+    @apply flex;
+}
+
+.details .production-pr {
+    @apply pr-2;
+}
+
+.details .release-runtime {
+    @apply flex;
+}
