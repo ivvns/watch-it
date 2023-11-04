@@ -14,9 +14,9 @@
           <h1>Watch-it</h1>
         </a>
         <ul>
-          <li><a href="/">Browse</a>
-          <li><a href="/movies/">Movies</a>
-          <li><a href="/shows/">Shows</a>
+          <li><a href="/" class="nav-link">Browse</a>
+          <li><a href="/movies/" class="nav-link">Movies</a>
+          <li><a href="/shows/" class="nav-link">Shows</a>
         </ul>
       </nav>
       <!-- Search --> 
@@ -31,98 +31,36 @@
     </div>
   </header>
 
+  
   <!-- Top Rated -->
   <section class="sections">
     <h2 class="section-heading">Top Rated Movies</h1>
     <!-- Slider main container -->
     <div class="classic-swiper">
-      <div class="swiper-wrapper">
+      <div id="top-movies" class="swiper-wrapper">
         <!-- Slides -->
-        <div class="swiper-slide">
-          <a href="#"><img src="/placeholder.jpg" alt="#"></a>
-          <div class="slider-text">
-            <h3>Potato</h3>
-            <p>Description</p>
-          </div>
-        </div>
-        <div class="swiper-slide">
-          <a href="#"><img src="/placeholder.jpg" alt="#"></a>
-          <div class="slider-text">
-            <h3>Potato</h3>
-            <p>Description</p>
-          </div>
-        </div>
-        <div class="swiper-slide">
-          <a href="#"><img src="/placeholder.jpg" alt="#"></a>
-          <div class="slider-text">
-            <h3>Potato</h3>
-            <p>Description</p>
-          </div>
-        </div>
-        <div class="swiper-slide">
-          <a href="#"><img src="/placeholder.jpg" alt="#"></a>
-          <div class="slider-text">
-            <h3>Potato</h3>
-            <p>Description</p>
-          </div>
-        </div>
-        <div class="swiper-slide">
-          <a href="#"><img src="/placeholder.jpg" alt="#"></a>
-          <div class="slider-text">
-            <h3>Potato</h3>
-            <p>Description</p>
-          </div>
-        </div>
-        <div class="swiper-slide">
-          <a href="#"><img src="/placeholder.jpg" alt="#"></a>
-          <div class="slider-text">
-            <h3>Potato</h3>
-            <p>Description</p>
-          </div>
-        </div>
-        <div class="swiper-slide">
-          <a href="#"><img src="/placeholder.jpg" alt="#"></a>
-          <div class="slider-text">
-            <h3>Potato</h3>
-            <p>Description</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
- 
-  <!-- Popular -->
-  <section class="sections">
-    <h2 class="section-heading">Popular Movies</h1>
-    <!-- Slider main container -->
-    <div class="classic-swiper">
-      <div class="swiper-wrapper">
-        <!-- Slides -->
-        <div class="swiper-slide">
-          <a href="#"><img src="/placeholder.jpg" alt="#"></a>
-          <div class="slider-text">
-            <h3>Potato</h3>
-            <p>Description</p>
-          </div>
-        </div>
       </div>
     </div>
   </section>
   
+  <!-- Popular Movies -->
+  <section class="sections">
+    <h2 class="section-heading">Popular Movies</h1>
+    <!-- Slider main container -->
+    <div class="classic-swiper">
+      <div id="popular-movies" class="swiper-wrapper">
+        <!-- Slides -->
+      </div>
+    </div>
+  </section>
+
   <!-- Upcoming -->
   <section class="sections">
     <h2 class="section-heading">Upcoming Movies</h1>
     <!-- Slider main container -->
     <div class="classic-swiper">
-      <div class="swiper-wrapper">
+      <div id="upcoming-movies" class="swiper-wrapper">
         <!-- Slides -->
-        <div class="swiper-slide">
-          <a href="#"><img src="/placeholder.jpg" alt="#"></a>
-          <div class="slider-text">
-            <h3>Potato</h3>
-            <p>Description</p>
-          </div>
-        </div>
       </div>
     </div>
   </section>
@@ -131,6 +69,8 @@
   <footer class="py-10">
     <p class="text-center">&copy; 2023 Watch-it by Ivan Somera</p>
   </footer>
+
+  <div class="spinner"></div>
 
   <script type="module" src="/main.js"></script>
   <script type="module" src="/swiper.js"></script>

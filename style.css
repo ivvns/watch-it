@@ -16,6 +16,10 @@ img {
     @apply w-full h-full object-cover object-center;
 }
 
+.active {
+    @apply text-secondaryColor;
+}
+
 .section-heading {
     @apply text-2xl font-medium pb-6;
 }
@@ -85,7 +89,7 @@ header {
 }
 
 .search.active .submit-btn {
-    transform: translateX(-52px);
+    @apply transform translate-x-[-52px]; 
 }
 
 /*
@@ -102,8 +106,7 @@ header {
 
 .hero-swiper {
     @apply overflow-hidden;
-    @apply lg:w-[80%] lg:h-[500px];
-    @apply xl:h-[500px] xl:w-[90%];
+
 }
 
 
@@ -121,27 +124,6 @@ header {
     @apply text-xs font-light;
     @apply md:text-base;
 }
-
-.soon-container {
-    @apply flex flex-col items-center pt-6 z-10 bg-bgColor; 
-    @apply lg:flex-none lg:w-[20%] lg:pl-6 lg:pt-0 lg:items-end;
-    @apply xl:w-[10%]
-}
-
-.soon-card {
-    @apply mx-2;
-    @apply lg:mx-0 pb-2;
-}
-
-.soon-card img {
-    @apply mb-2 h-[150px] object-cover object-center;
-}
-
-.soon-card p {
-    @apply text-xs;
-    @apply lg:text-sm; 
-}
-
 /*
 |------------------------------------------
 |  Classic Sliders
@@ -163,9 +145,6 @@ header {
     @apply md:text-base;
 }
 
-.classic-swiper {
-    @apply lg:h-[350px] overflow-hidden;
-}
 
 /*
 |------------------------------------------
@@ -177,21 +156,6 @@ header {
     @apply relative;
 }
    
-
-/*
-|------------------------------------------
-|  Now playing
-|------------------------------------------
-*/
-
-.playing-swiper {
-    @apply lg:h-[400px] overflow-hidden;
-}
-
-.trending-wrapper {
-    @apply relative;
-}
-
 /*
 |------------------------------------------
 |  Search Page
