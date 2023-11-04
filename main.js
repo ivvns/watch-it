@@ -43,8 +43,8 @@ async function displayPopularMovies() {
         <a href="/movieDetails/index.html?id=${movie.id}">
             ${
                 movie.poster_path
-                 ? `<img src="https://image.tmdb.org/t/p/w500${movie.poster_path}" alt="#">` 
-                 : `<img src="/placeholder.jpg" alt="#">`
+                 ? `<img src="https://image.tmdb.org/t/p/w500${movie.poster_path}" alt="${movie.title}">` 
+                 : `<img src="/placeholder.jpg" alt="${movie.title}">`
             }
         </a>
         <div class="hero-text">
@@ -67,8 +67,8 @@ async function displayTrendingMovies() {
         <a href="/movieDetails/index.html?id=${movie.id}">
         ${
             movie.poster_path
-             ? `<img src="https://image.tmdb.org/t/p/w500${movie.poster_path}" alt="#">` 
-             : `<img src="/placeholder.jpg" alt="#">`
+             ? `<img src="https://image.tmdb.org/t/p/w500${movie.poster_path}" alt="${movie.title}">` 
+             : `<img src="/placeholder.jpg" alt="${movie.title}">`
         }
         <div class="slider-text">
           <h3>${movie.title}</h3>
@@ -90,8 +90,8 @@ async function displayTopRatedMovies() {
         <a href="/movieDetails/index.html?id=${movie.id}">
         ${
             movie.poster_path
-             ? `<img src="https://image.tmdb.org/t/p/w500${movie.poster_path}" alt="#">` 
-             : `<img src="/placeholder.jpg" alt="#">`
+             ? `<img src="https://image.tmdb.org/t/p/w500${movie.poster_path}" alt="${movie.title}">` 
+             : `<img src="/placeholder.jpg" alt="${movie.title}">`
         }
         <div class="slider-text">
           <h3>${movie.title}</h3>
@@ -113,8 +113,8 @@ async function displayUpcomingMovies() {
         <a href="/movieDetails/index.html?id=${movie.id}">
         ${
             movie.poster_path
-             ? `<img src="https://image.tmdb.org/t/p/w500${movie.poster_path}" alt="#">` 
-             : `<img src="/placeholder.jpg" alt="#">`
+             ? `<img src="https://image.tmdb.org/t/p/w500${movie.poster_path}" alt="${movie.title}">` 
+             : `<img src="/placeholder.jpg" alt="${movie.title}">`
         }
         <div class="slider-text">
           <h3>${movie.title}</h3>
@@ -130,7 +130,7 @@ async function displayMovieDetails() {
     const movieId = window.location.search.split('=')[1];
 
     const movie = await fetchAPIData(`movie/${movieId}`);
-
+    console.log(movie);
     // Overlay for background image
     displayBackgroundImage('movie', movie.backdrop_path);
 
@@ -149,8 +149,8 @@ async function displayMovieDetails() {
         <h2 class="text-3xl font-bold">${movie.title}</h2>
         <p class="text-lg pb-2">${movie.vote_average.toFixed(1)} / 10 <i class="fa-regular fa-star"></i></span></p>
         <div class="flex">
-          <p class="pr-4 text-base">${movie.release_date}</p>
-          <p></p>
+            <p class="pr-4">${movie.release_date}</p>
+            <p>${movie.runtime} minutes</p>
         </div>
         <ul class="flex pb-4">
             ${movie.genres.map((genre) => `<li class="pr-2">${genre.name}</li>`).join('')}
@@ -177,8 +177,8 @@ async function displayTrendingShows() {
         <a href="/showDetails/index.html?id=${show.id}">
         ${
             show.poster_path
-             ? `<img src="https://image.tmdb.org/t/p/w500${show.poster_path}" alt="#">` 
-             : `<img src="/placeholder.jpg" alt="#">`
+             ? `<img src="https://image.tmdb.org/t/p/w500${show.poster_path}" alt="${show.name}">` 
+             : `<img src="/placeholder.jpg" alt="${show.name}">`
         }
         <div class="slider-text">
           <h3>${show.name}</h3>
@@ -200,8 +200,8 @@ async function displayTopRatedShows() {
         <a href="/showDetails/index.html?id=${show.id}">
         ${
             show.poster_path
-             ? `<img src="https://image.tmdb.org/t/p/w500${show.poster_path}" alt="#">` 
-             : `<img src="/placeholder.jpg" alt="#">`
+             ? `<img src="https://image.tmdb.org/t/p/w500${show.poster_path}" alt="${show.name}">` 
+             : `<img src="/placeholder.jpg" alt="${show.name}">`
         }
         <div class="slider-text">
           <h3>${show.name}</h3>
@@ -223,8 +223,8 @@ async function displayPopularShows() {
         <a href="/showDetails/index.html?id=${show.id}">
         ${
             show.poster_path
-             ? `<img src="https://image.tmdb.org/t/p/w500${show.poster_path}" alt="#">` 
-             : `<img src="/placeholder.jpg" alt="#">`
+             ? `<img src="https://image.tmdb.org/t/p/w500${show.poster_path}" alt="${show.name}">` 
+             : `<img src="/placeholder.jpg" alt="${show.name}">`
         }
         <div class="slider-text">
           <h3>${show.name}</h3>
@@ -246,8 +246,8 @@ async function displayOnAirShows() {
         <a href="/showDetails/index.html?id=${show.id}">
         ${
             show.poster_path
-             ? `<img src="https://image.tmdb.org/t/p/w500${show.poster_path}" alt="#">` 
-             : `<img src="/placeholder.jpg" alt="#">`
+             ? `<img src="https://image.tmdb.org/t/p/w500${show.poster_path}" alt="${show.name}">` 
+             : `<img src="/placeholder.jpg" alt="${show.name}">`
         }
         <div class="slider-text">
           <h3>${show.name}</h3>
@@ -258,6 +258,48 @@ async function displayOnAirShows() {
         document.querySelector('#on-air').appendChild(div);
     });
 }
+
+async function displayShowDetails() {
+    const showId = window.location.search.split('=')[1];
+
+    const show = await fetchAPIData(`tv/${showId}`);
+   
+    // Overlay for background image
+    displayBackgroundImage('tv', show.backdrop_path);
+
+    const div = document.createElement('div');
+
+    div.innerHTML = `
+    <div class="movie-details">
+      <div class="details-image">
+      ${
+        show.poster_path
+         ? `<img src="https://image.tmdb.org/t/p/w500${show.poster_path}" alt="${show.name}">` 
+         : `<img src="/placeholder.jpg" alt="${show.name}">`
+      }
+      </div>
+      <div>
+        <h2 class="text-3xl font-bold">${show.name}</h2>
+        <p class="text-lg pb-2">${show.vote_average.toFixed(1)} / 10 <i class="fa-regular fa-star"></i></span></p>
+        <p class="pr-4 text-base">Last Air Date: ${show.last_air_date}</p>
+        <ul class="flex">
+          <li class="pr-2"> ${show.number_of_seasons}  Seasons</li>
+          <li> ${show.number_of_episodes} Episodes</li>
+        </ul>
+        <ul class="flex pb-4">
+            ${show.genres.map((genre) => `<li class="pr-2">${genre.name}</li>`).join('')}
+        </ul>
+        <p class="text-lg pb-4 font-semibold">${show.overview}</p>
+        <ul class="flex">
+            ${show.production_companies.map((company) => `<li class="pr-2">${company.name}</li>`).join('')}
+        </ul>
+      </div>
+    </div>
+    `;
+
+    document.querySelector('#show-details').appendChild(div);
+}
+
 
 function displayBackgroundImage(type, backgroundPath) {
     const overlayDiv = document.createElement('div');
@@ -326,7 +368,7 @@ function init() {
             displayMovieDetails();
             break;
         case'/showDetails/index.html':
-        console.log('show details');
+            displayShowDetails();
             break;
         case'/search/':
         console.log('search page');
