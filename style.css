@@ -21,8 +21,9 @@ img {
 }
 
 .sections {
-    @apply py-6 px-4 m-auto overflow-x-hidden;
-    @apply md:w-9/12 md:p-0 md:pb-24;
+    @apply py-6 px-4 overflow-x-hidden max-w-[1400px];
+    @apply md:px-6 md:pb-24;
+    @apply lg:px-4 m-auto;
 }
 
 /*
@@ -36,8 +37,9 @@ header {
 }
 
 .nav-container {
-    @apply py-6 px-4 max-w-full m-auto;
-    @apply md:w-9/12 md:px-0 md:flex md:justify-between md:items-center;
+    @apply py-6 px-6 m-auto max-w-[1400px];
+    @apply md:flex md:justify-between md:items-center;
+    @apply lg:px-4;
 }
 
 .nav-items {
@@ -93,11 +95,13 @@ header {
 */
 
 .hero-banner {
- @apply py-6 px-4 m-auto overflow-hidden;
- @apply md:w-9/12 md:p-0 md:pb-24;
+ @apply p-6 m-auto overflow-x-hidden max-w-[1400px];
+ @apply md:pb-24;
+ @apply lg:px-4;
 }
 
 .hero-swiper {
+    @apply overflow-hidden;
     @apply lg:w-[80%] lg:h-[500px];
     @apply xl:h-[500px] xl:w-[90%];
 }
@@ -126,7 +130,7 @@ header {
 
 .soon-card {
     @apply mx-2;
-    @apply lg:mx-0 lg:mb-6;
+    @apply lg:mx-0 pb-2;
 }
 
 .soon-card img {
@@ -160,7 +164,7 @@ header {
 }
 
 .classic-swiper {
-    @apply lg:h-[350px];
+    @apply lg:h-[350px] overflow-hidden;
 }
 
 /*
@@ -181,7 +185,7 @@ header {
 */
 
 .playing-swiper {
-    @apply lg:h-[400px];
+    @apply lg:h-[400px] overflow-hidden;
 }
 
 .trending-wrapper {
@@ -195,12 +199,14 @@ header {
 */
 
 .search-heading {
-    @apply text-5xl font-bold text-center pb-10;
+    @apply text-xl font-bold text-center pb-10;
+    @apply lg:text-5xl
 }
 
 .search-wrapper {
-    @apply flex flex-wrap justify-between gap-1 w-full;
-
+    @apply flex flex-wrap justify-around w-full;
+    @apply md:gap-6;
+    @apply lg:gap-8;
 }
 
 .search-card {
@@ -210,5 +216,36 @@ header {
 .search-text {
     @apply absolute bottom-0 left-0 bg-secondaryColor w-full p-2 opacity-90;
     @apply md:p-4;
+}
+
+/*
+|------------------------------------------
+|  Movie/Show Details
+|------------------------------------------
+*/
+
+.details {
+    @apply max-w-[1400px] m-auto px-4;
+    height: calc(100vh - 104px);
+}
+
+.back {
+    @apply text-secondaryColor pb-12 pt-6
+}
+
+.back a {
+    @apply rounded-full p-2 bg-white hover:bg-secondaryColor hover:text-white transition ease-in-out;
+}
+
+.details-bgimg {
+    @apply bg-cover bg-center bg-no-repeat h-full w-full absolute top-0 left-0 z-[-1] opacity-10;
+    background-image: url(/public/placeholder.jpg);
+}
+.movie-details {
+    @apply flex;
+}
+
+.details-image {
+    @apply w-[1200px] mr-12;
 }
 

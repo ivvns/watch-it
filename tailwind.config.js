@@ -5,6 +5,8 @@ export default {
     "./movies/index.html",
     "./shows/index.html",
     "./search/index.html",
+    "./movieDetails/index.html",
+    "./showDetails/index.html",
     "./*.{js}",
   ],
   screen: {

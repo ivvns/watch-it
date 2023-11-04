@@ -9,6 +9,9 @@ export default defineConfig({
         movies: resolve(__dirname, 'movies/index.html'),
         shows: resolve(__dirname, 'shows/index.html'),
         search: resolve(__dirname, 'search/index.html'),
+        movieDetails: resolve(__dirname, 'movieDetails/index.html'),
+        showDetails: resolve(__dirname, 'showDetails/index.html'),
+        
       },
     },
   },
