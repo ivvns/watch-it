@@ -29,6 +29,11 @@ img {
     @apply md:px-6 md:pb-24;
     @apply lg:px-4 m-auto;
 }
+
+footer {
+    @apply py-20;
+}
+
   
 /*
 |------------------------------------------
@@ -238,8 +243,7 @@ input[type='radio'] {
 */
 
 .details {
-    @apply max-w-[1400px] m-auto px-4;
-    height: calc(100vh - 104px);
+    @apply max-w-[1400px] m-auto px-4 overflow-hidden;
 }
 
 .back {
@@ -282,7 +286,6 @@ input[type='radio'] {
     @apply flex;
 }
 
-
 .details .overview {
     @apply text-lg pb-4 font-semibold;
 }
@@ -298,3 +301,39 @@ input[type='radio'] {
 .details .release-runtime {
     @apply flex;
 }
+
+/* Credits */
+
+.credits {
+    @apply py-6;
+}
+
+.credits-cast-crew {
+    @apply flex py-[4px];
+}
+
+.credits h4{
+    @apply text-2xl pb-2;
+}
+
+.cast-list {
+    @apply text-lg pr-4;
+}
+
+
+/* Recommendation */
+
+.recommendation {
+    @apply pt-10 pb-16;
+}
+
+.recommendation h4 {
+    @apply text-xl pb-6;
+}
+
+/* Similar */
+
+.similar h4 {
+    @apply text-lg pb-6;
+}
+

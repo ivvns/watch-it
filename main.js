@@ -50,6 +50,8 @@ async function searchAPIData() {
     return data;
 }
 
+
+// Movies
 async function displayPopularMovies() {
     const { results } = await fetchAPIData('movie/popular');
     
@@ -147,7 +149,6 @@ async function displayMovieDetails() {
     const movieId = window.location.search.split('=')[1];
 
     const movie = await fetchAPIData(`movie/${movieId}`);
-    console.log(movie);
     // Overlay for background image
     displayBackgroundImage('movie', movie.backdrop_path);
 
@@ -184,6 +185,105 @@ async function displayMovieDetails() {
     document.querySelector('#movie-details').appendChild(div);
 }
 
+async function displayMovieCredits() {
+    const movieId = window.location.search.split('=')[1];
+
+    const results  = await fetchAPIData(`movie/${movieId}/credits`);
+
+    const castResult = results.cast.slice(0, 5);
+    const crewResult = results.crew.slice(0, 3);
+    const castAndCrew = castResult.concat(crewResult);
+
+    const heading = document.createElement('h4');
+    heading.innerHTML = `Cast & Crew`;
+
+    castResult.forEach( credit => {
+        const list = document.createElement('li');
+        list.classList.add('cast-list');
+
+        list.innerHTML = `
+            ${credit.name}
+        `;
+        
+        document.querySelector('#credits-heading').appendChild(heading);
+        document.querySelector('#credits-cast').appendChild(list);
+    });
+
+    crewResult.forEach( credit => {
+        const list = document.createElement('li');
+        list.classList.add('cast-list');
+
+        list.innerHTML = `
+            ${credit.name}
+        `;
+        
+        document.querySelector('#credits-crew').appendChild(list);
+    });
+}
+
+async function displayMovieRecommendations() {
+    const movieId = window.location.search.split('=')[1];
+    const { results } = await fetchAPIData(`movie/${movieId}/recommendations`);
+
+    const newResults = results.slice(0, 10);
+
+    const heading = document.createElement('h4');
+    heading.innerHTML = `What next? `;
+    
+    newResults.forEach(movie => {
+        const div = document.createElement('div');
+
+        div.classList.add('swiper-slide');
+        div.innerHTML = `
+        <a href="/movieDetails/index.html?id=${movie.id}">
+        ${
+            movie.poster_path
+             ? `<img src="https://image.tmdb.org/t/p/w500${movie.poster_path}" alt="${movie.title}">` 
+             : `<img src="/placeholder.jpg" alt="${movie.title}">`
+        }
+        <div class="slider-text">
+          <h3>${movie.title}</h3>
+          <p>${movie.release_date}</p>
+        </div>
+        `;
+
+        document.querySelector('#recommended-heading').appendChild(heading);
+        document.querySelector('#movies-recommended').appendChild(div);
+    });
+}
+
+async function displayMovieSimilar() {
+    const movieId = window.location.search.split('=')[1];
+    const { results } = await fetchAPIData(`movie/${movieId}/similar`);
+
+    const newResults = results.slice(0, 10);
+
+    const heading = document.createElement('h4');
+    heading.innerHTML = `You might also like: `;
+    
+    newResults.forEach(movie => {
+        const div = document.createElement('div');
+
+        div.classList.add('swiper-slide');
+        div.innerHTML = `
+        <a href="/movieDetails/index.html?id=${movie.id}">
+        ${
+            movie.poster_path
+             ? `<img src="https://image.tmdb.org/t/p/w500${movie.poster_path}" alt="${movie.title}">` 
+             : `<img src="/placeholder.jpg" alt="${movie.title}">`
+        }
+        <div class="slider-text">
+          <h3>${movie.title}</h3>
+          <p>${movie.release_date}</p>
+        </div>
+        `;
+
+        document.querySelector('#similar-heading').appendChild(heading);
+        document.querySelector('#movies-similar').appendChild(div);
+    });
+}
+
+// Shows
 async function displayTrendingShows() {
     const { results } = await fetchAPIData('trending/tv/day');
 
@@ -317,6 +417,71 @@ async function displayTVDetails() {
     document.querySelector('#show-details').appendChild(div);
 }
 
+async function displayShowCredits() {
+    const showId = window.location.search.split('=')[1];
+
+    const results  = await fetchAPIData(`tv/${showId}/credits`);
+    const castResult = results.cast.slice(0, 9);
+    const crewResult = results.crew.slice(0, 3);
+
+    const heading = document.createElement('h4');
+    heading.innerHTML = `Cast & Crew`;
+
+    castResult.forEach( credit => {
+        const list = document.createElement('li');
+        list.classList.add('cast-list');
+
+        list.innerHTML = `
+            ${credit.name}
+        `;
+        
+        document.querySelector('#credits-heading').appendChild(heading);
+        document.querySelector('#credits-cast').appendChild(list);
+    });
+
+    crewResult.forEach( credit => {
+        const list = document.createElement('li');
+        list.classList.add('cast-list');
+
+        list.innerHTML = `
+            ${credit.name}
+        `;
+        
+        document.querySelector('#credits-crew').appendChild(list);
+    });
+}
+
+async function displayShowRecommendations() {
+    const showId = window.location.search.split('=')[1];
+    const { results } = await fetchAPIData(`tv/${showId}/recommendations`);
+
+    const newResults = results.slice(0, 10);
+    console.log(newResults);
+
+    const heading = document.createElement('h4');
+    heading.innerHTML = `What next? `;
+    
+    newResults.forEach(show => {
+        const div = document.createElement('div');
+
+        div.classList.add('swiper-slide');
+        div.innerHTML = `
+        <a href="/tvDetails/index.html?id=${show.id}">
+        ${
+            show.poster_path
+             ? `<img src="https://image.tmdb.org/t/p/w500${show.poster_path}" alt="${show.name}">` 
+             : `<img src="/placeholder.jpg" alt="${show.name}">`
+        }
+        <div class="slider-text">
+          <h3>${show.name}</h3>
+          <p>${show.vote_average.toFixed(1)} / 10 <i class="fa-regular fa-star"></i></p>
+        </div>
+        `;
+
+        document.querySelector('#recommended-heading').appendChild(heading);
+        document.querySelector('#recommended-shows').appendChild(div);
+    });
+}
 
 // Search Movies/Shows
 async function search() {
@@ -500,9 +665,14 @@ function init() {
                 break;
         case'/movieDetails/index.html':
             displayMovieDetails();
+            displayMovieCredits();
+            displayMovieRecommendations();
+            displayMovieSimilar();
             break;
         case'/tvDetails/index.html':
             displayTVDetails();
+            displayShowCredits();
+            displayShowRecommendations();
             break;
         case'/search/index.html':
             search();
