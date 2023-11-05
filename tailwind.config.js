@@ -7,7 +7,7 @@ export default {
     "./search/index.html",
     "./movieDetails/index.html",
     "./tvDetails/index.html",
-    "./*.{js}",
+    "./*.js",
   ],
   screen: {
     sm: '480px',
