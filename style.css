@@ -61,7 +61,7 @@ header {
 }
 
 .nav-container ul li{
-    @apply text-sm px-2  font-light transition ease-in-out hover:text-secondaryColor hover:font-medium;
+    @apply text-sm px-2 font-medium transition ease-in-out hover:text-secondaryColor;
     @apply lg:p-4 lg:text-base;
 }
 
@@ -181,7 +181,7 @@ input[type='radio'] {
 }
 
 .search-wrapper {
-    @apply flex flex-wrap justify-around w-full;
+    @apply flex flex-wrap justify-between w-full;
     @apply md:gap-6;
     @apply lg:gap-8;
 }
@@ -208,6 +208,26 @@ input[type='radio'] {
 .search-text p {
     @apply text-xs font-light;
     @apply md:text-base;
+}
+
+.pagination {
+    @apply flex flex-col items-end;
+}
+
+.paginationBtn {
+    @apply px-4 py-3 mt-6 bg-secondaryColor hover:bg-primaryColor hover:text-secondaryColor transition ease-in-out;
+}
+
+.paginationBtn:disabled {
+    @apply pointer-events-none;
+}
+
+.page-counter {
+    @apply mt-2 text-lg font-medium;
+}
+
+.pagination-left {
+    @apply mr-2;
 }
 
 

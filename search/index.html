@@ -1,9 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Search</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <title>Search</title>
 </head>
 <body>
 
@@ -33,7 +36,7 @@
             <input 
               name="search-term"
               type="text" 
-              id="search-input" 
+              id="search-term" 
               class="search-input" 
               placeholder="Enter a show or movie..." 
             />
@@ -46,10 +49,11 @@
   </header>
 
   <section class="sections">
-    <h2 class="search-heading">20 of 69 Results for Potato</h2>
+    <h2 id="search-results-heading" class="search-heading"></h2>
     <div class="search-wrapper" id="search-results">
     </div>
-    <div id="paginations"></div>
+    <div id="pagination">
+    </div>
   </section>
 
 
