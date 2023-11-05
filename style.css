@@ -34,6 +34,11 @@ footer {
     @apply py-20;
 }
 
+.swiper-slide {
+    @apply !h-auto;
+  
+}
+
   
 /*
 |------------------------------------------
@@ -93,10 +98,6 @@ header {
 
 input[type='radio'] {
     @apply accent-secondaryColor;
-}
-
-.swiper-slide {
-    height: auto !important;
 }
 
 /*
@@ -248,40 +249,61 @@ input[type='radio'] {
 |------------------------------------------
 */
 
-.details {
-    @apply max-w-[1400px] m-auto px-4 overflow-hidden;
-}
 
 .back {
-    @apply text-secondaryColor pb-12 pt-6
+    @apply text-sm text-center text-secondaryColor pb-12 pt-6;
+    @apply md:text-left md:text-base;
 }
 
 .back a {
     @apply rounded-full p-3 bg-white hover:bg-secondaryColor hover:text-white transition ease-in-out;
 }
 
+.details {
+    @apply py-6 px-6 m-auto max-w-[1400px];
+    @apply lg:m-auto lg:px-4 overflow-hidden;
+}
+
 .details-container {
-    @apply flex max-h-[500px];
+    @apply md:flex;
+    @apply lg:max-h-[500px];
 }
 
 .details-image {
-    @apply mr-12 w-full max-w-[400px];
+    @apply mb-3 w-full ;
+    @apply md:mr-8;
+    @apply lg:mr-12 lg:max-w-[400px];
+}
+
+.details-content {
+    @apply md:max-w-[400px];
+    @apply lg:max-w-[600px];
+    @apply xl:max-w-[800px];
 }
 
 .details-content .title{
-    @apply text-3xl font-bold;
+    @apply text-xl font-bold;
+    @apply md:text-2xl;
+    @apply lg:text-3xl;
 }
 
 .details-content .rating {
-    @apply text-xl pb-2;
+    @apply text-lg pb-2;
+    @apply lg:text-xl;
 }
 
 .details-content .padding-right {
-    @apply pr-4;
+    @apply md:pr-2;
+    @apply lg:pr-4;
 }
 
 .details .genres {
-    @apply flex pb-4;
+    @apply sm:flex pb-4;
+}
+
+.genres li {
+    @apply text-sm;
+    @apply lg:text-base;
 }
 
 .details-content .air-date {
@@ -293,14 +315,18 @@ input[type='radio'] {
 }
 
 .details .overview {
-    @apply text-lg pb-4 font-semibold;
+    @apply text-sm pb-4 font-semibold;
+    @apply md:text-base;
+    @apply lg:text-lg;
 }
 
 .details .production {
-    @apply flex;
+    @apply text-sm;
+    @apply flex flex-wrap;
+    @apply md:text-base;
 }
 
-.details .production-pr {
+.details .padding-right {
     @apply pr-2;
 }
 
@@ -311,19 +337,23 @@ input[type='radio'] {
 /* Credits */
 
 .credits {
-    @apply pt-6 pb-10;
+    @apply lg:pt-6 lg:pb-10;
 }
 
 .credits-cast-crew {
-    @apply flex py-[4px];
+    @apply md:flex md:py-[4px];
 }
 
 .credits h4{
-    @apply text-2xl pb-2;
+    @apply text-lg pb-2;
+    @apply md:text-xl;
+    @apply lg:text-2xl;
 }
 
 .cast-list {
-    @apply text-lg pr-4;
+    @apply text-sm pb-1; 
+    @apply md:text-base pr-4;
+    @apply lg:text-lg;
 }
 
 
@@ -334,13 +364,20 @@ input[type='radio'] {
 }
 
 .recommendation h4 {
-    @apply text-xl pb-6;
+    @apply pb-6 text-base;
+    @apply md:text-lg;
+    @apply lg:text-xl;
 }
 
 /* Similar */
 
+.similar-swiper, .rec-swiper {
+    @apply overflow-hidden;
+}
+
 .similar h4 {
-    @apply text-lg pb-6;
+    @apply pb-6 text-base;
+    @apply lg:text-lg;
 }
 
 /*
@@ -350,15 +387,18 @@ input[type='radio'] {
 */
 
 .latest-season h4 {
-    @apply text-2xl pb-3 font-medium;
+    @apply text-lg pb-3 font-medium;
+    @apply md:text-xl;
+    @apply lg:text-2xl;
 }
 
 .latest-container {
-    @apply flex max-h-[400px];
+    @apply md:flex lg:max-h-[400px];
 }
 
 .latest-img {
-    @apply max-w-[200px] mr-4;
+    @apply mb-4;
+    @apply md:max-w-[200px] md:mr-4 md:mb-0;
 }
 
 .latest-heading  {
@@ -366,11 +406,11 @@ input[type='radio'] {
 }
 
 .latest-heading h5 {
-    @apply text-xl pr-6;
+    @apply md:text-xl pr-6;
 }
 
 .latest-details ul {
-    @apply flex;
+    @apply lg:flex;
 }
 
 .latest-details ul li {
@@ -396,27 +436,37 @@ input[type='radio'] {
 */
 
 .season-heading {
-    @apply text-2xl font-semibold pb-8;
+    @apply text-xl font-semibold pb-6;
+    @apply md:text-2xl md:pb-8;
 }
 
 .episode-container {
-    @apply flex pb-10 max-h-[200px];
+    @apply pb-10;
+    @apply md:flex;
+}
+
+.episode-content {
+    @apply lg:max-w-[800px];
 }
 
 .episode-img {
-    @apply max-w-[300px] mr-4;
+    @apply mb-2;
+    @apply md:max-w-[150px] md:mr-4;
+    @apply lg:max-w-[300px];
 }
 
 .episode-heading {
-    @apply flex items-center;
+    @apply md:flex md:items-center;
 }
 
 .episode-heading h5 {
-    @apply text-xl font-medium pr-4;
+    @apply text-base;
+    @apply md:text-xl font-medium pr-4;
 }
 
 .episode-heading p {
-    @apply font-light;
+    @apply text-sm font-light pb-1;
+    @apply md:text-base md:pb-0;
 }
 
 .episode-details ul {
@@ -424,11 +474,16 @@ input[type='radio'] {
 }
 
 .episode-details ul li {
-    @apply font-light pr-4 pb-2;
+    @apply text-sm font-light pr-4 pb-2;
+    @apply md:text-base;
 }
 
 .episode-overview {
-    @apply max-w-[800px];
+    @apply lg:max-w-[800px];
+}
+
+.episode-overview p {
+    @apply text-sm;
 }
 
 

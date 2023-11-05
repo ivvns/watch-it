@@ -247,7 +247,7 @@ async function displayMovieRecommendations() {
         </div>
         `;
 
-        document.querySelector('#recommendation').classList.add('recommendation');
+        document.querySelector('#recommendation').classList.add('details', 'recommendation');
         document.querySelector('#recommended-heading').appendChild(heading);
         document.querySelector('#movies-recommended').appendChild(div);
     });
@@ -540,6 +540,8 @@ async function displayShowSeasonDetails() {
     const getSeasonDetail = await fetchAPIData(`tv/${seasonId}`);
 
     const getEpisodes = getSeasonDetail.episodes;
+    
+  
 
     const prevPage = document.createElement('p');
     prevPage.innerHTML = `
@@ -561,7 +563,7 @@ async function displayShowSeasonDetails() {
            : `<img src="/placeholder.jpg" alt="${episode.name}">`
         }
         </div>
-        <div>
+        <div class="episode-content">
           <div class="episode-heading">
             <h5>Episode ${episode.episode_number}</h5>
             <p>${episode.name}</p>
@@ -574,7 +576,7 @@ async function displayShowSeasonDetails() {
             </ul>
           </div>
           <div class="episode-overview">
-            <p>${episode.overview ? episode.overview : "Who knows what happens"}</p>
+            <p>${episode.overview.length > 250 ? episode.overview.split('.')[0] + '.' + episode.overview.split('.')[1] + '. ' : episode.overview}</p>
           </div>
         </div>
         `;

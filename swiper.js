@@ -13,6 +13,7 @@ const heroSwiper = new Swiper('.hero-swiper', {
             slidesPerView: 2,
             spaceBetween: 20,
         },
+ 
         768: {
             slidesPerView: 3,
             spaceBetween: 30,
