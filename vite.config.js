@@ -10,7 +10,7 @@ export default defineConfig({
         shows: resolve(__dirname, 'shows/index.html'),
         search: resolve(__dirname, 'search/index.html'),
         movieDetails: resolve(__dirname, 'movieDetails/index.html'),
-        showDetails: resolve(__dirname, 'showDetails/index.html'),
+        tvDetails: resolve(__dirname, 'tvDetails/index.html'),
         
       },
     },
