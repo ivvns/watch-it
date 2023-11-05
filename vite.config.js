@@ -11,6 +11,7 @@ export default defineConfig({
         search: resolve(__dirname, 'search/index.html'),
         movieDetails: resolve(__dirname, 'movieDetails/index.html'),
         tvDetails: resolve(__dirname, 'tvDetails/index.html'),
+        tvSeasonDetails: resolve(__dirname, 'tvSeasonDetails/index.html'),
         
       },
     },

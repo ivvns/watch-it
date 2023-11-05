@@ -95,6 +95,10 @@ input[type='radio'] {
     @apply accent-secondaryColor;
 }
 
+.swiper-slide {
+    height: auto !important;
+}
+
 /*
 |------------------------------------------
 |  Hero Banner and Swiper
@@ -126,6 +130,8 @@ input[type='radio'] {
     @apply text-xs font-light;
     @apply md:text-base;
 }
+
+
 /*
 |------------------------------------------
 |  Classic Sliders
@@ -255,11 +261,11 @@ input[type='radio'] {
 }
 
 .details-container {
-    @apply flex;
+    @apply flex max-h-[500px];
 }
 
 .details-image {
-    @apply mr-12 w-full max-h-[800px];
+    @apply mr-12 w-full max-w-[400px];
 }
 
 .details-content .title{
@@ -305,7 +311,7 @@ input[type='radio'] {
 /* Credits */
 
 .credits {
-    @apply py-6;
+    @apply pt-6 pb-10;
 }
 
 .credits-cast-crew {
@@ -336,4 +342,93 @@ input[type='radio'] {
 .similar h4 {
     @apply text-lg pb-6;
 }
+
+/*
+|------------------------------------------
+|  Show - Current Season
+|------------------------------------------
+*/
+
+.latest-season h4 {
+    @apply text-2xl pb-3 font-medium;
+}
+
+.latest-container {
+    @apply flex max-h-[400px];
+}
+
+.latest-img {
+    @apply max-w-[200px] mr-4;
+}
+
+.latest-heading  {
+    @apply flex items-center;
+}
+
+.latest-heading h5 {
+    @apply text-xl pr-6;
+}
+
+.latest-details ul {
+    @apply flex;
+}
+
+.latest-details ul li {
+    @apply font-light pr-4 pb-2;
+}
+
+.latest-overview {
+    @apply max-w-[800px];
+}
+
+.btn-wrapper {
+    @apply mt-6;
+}
+.episodes-btn {
+    @apply p-2 bg-secondaryColor hover:bg-primaryColor hover:text-secondaryColor transition ease-in-out;
+}
+
+
+/*
+|------------------------------------------
+|  Show - List of episodes
+|------------------------------------------
+*/
+
+.season-heading {
+    @apply text-2xl font-semibold pb-8;
+}
+
+.episode-container {
+    @apply flex pb-10 max-h-[200px];
+}
+
+.episode-img {
+    @apply max-w-[300px] mr-4;
+}
+
+.episode-heading {
+    @apply flex items-center;
+}
+
+.episode-heading h5 {
+    @apply text-xl font-medium pr-4;
+}
+
+.episode-heading p {
+    @apply font-light;
+}
+
+.episode-details ul {
+    @apply flex;
+}
+
+.episode-details ul li {
+    @apply font-light pr-4 pb-2;
+}
+
+.episode-overview {
+    @apply max-w-[800px];
+}
+
 

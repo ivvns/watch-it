@@ -25,7 +25,7 @@ async function fetchAPIData(endpoint) {
 
     showSpinner();
 
-    const response = await fetch(`${API_URL}${endpoint}?api_key=${API_KEY}&language=en-US?`);
+    const response = await fetch(`${API_URL}${endpoint}?api_key=${API_KEY}&language=en-CA?`);
 
     const data = await response.json();
 
@@ -49,7 +49,6 @@ async function searchAPIData() {
 
     return data;
 }
-
 
 // Movies
 async function displayPopularMovies() {
@@ -228,6 +227,7 @@ async function displayMovieRecommendations() {
     const newResults = results.slice(0, 10);
 
     const heading = document.createElement('h4');
+    
     heading.innerHTML = `What next? `;
     
     newResults.forEach(movie => {
@@ -247,6 +247,7 @@ async function displayMovieRecommendations() {
         </div>
         `;
 
+        document.querySelector('#recommendation').classList.add('recommendation');
         document.querySelector('#recommended-heading').appendChild(heading);
         document.querySelector('#movies-recommended').appendChild(div);
     });
@@ -259,7 +260,7 @@ async function displayMovieSimilar() {
     const newResults = results.slice(0, 10);
 
     const heading = document.createElement('h4');
-    heading.innerHTML = `You might also like: `;
+    heading.innerHTML = `You might also like`;
     
     newResults.forEach(movie => {
         const div = document.createElement('div');
@@ -378,9 +379,9 @@ async function displayOnAirShows() {
 
 async function displayTVDetails() {
     const showId = window.location.search.split('=')[1];
-
     const show = await fetchAPIData(`tv/${showId}`);
-   
+    console.log(show);
+
     // Overlay for background image
     displayBackgroundImage('tv', show.backdrop_path);
 
@@ -456,7 +457,6 @@ async function displayShowRecommendations() {
     const { results } = await fetchAPIData(`tv/${showId}/recommendations`);
 
     const newResults = results.slice(0, 10);
-    console.log(newResults);
 
     const heading = document.createElement('h4');
     heading.innerHTML = `What next? `;
@@ -483,6 +483,111 @@ async function displayShowRecommendations() {
     });
 }
 
+async function displayShowLatestSeason() {
+    const showId = window.location.search.split('=')[1];
+
+    const getShowDetails = await fetchAPIData(`tv/${showId}`);
+    const getSeasons = getShowDetails.seasons;
+    const getCurrSeason = getSeasons[getSeasons.length - 1];
+    const getSeasonNumber = getCurrSeason.season_number;
+
+    const show = await fetchAPIData(`tv/${showId}/season/${getSeasonNumber}`);
+
+    const heading = document.createElement('h4');
+    heading.innerHTML = `Current Season`;
+
+    const div = document.createElement('div');
+    div.classList.add('latest-container')
+    div.innerHTML = `
+    <div class="latest-img">
+    ${
+      show.poster_path
+       ? `<img src="https://image.tmdb.org/t/p/w500${show.poster_path}" alt="${show.name}">` 
+       : `<img src="/placeholder.jpg" alt="${show.name}">`
+    }
+    </div>
+    <div>
+      <div class="latest-heading">
+        <h5>Season ${show.season_number}</h5>
+        <p>${show.name}</p>
+      </div>
+      <div class="latest-details">
+        <ul>
+          <li>${show.vote_average.toFixed(1)}/10 <i class="fa-regular fa-star"></i></li>
+          <li>${show.episodes.length} Episodes</li>
+          <li>${show.air_date}</li>
+        </ul>
+      </div>
+      <div class="latest-overview">
+        <p>${show.overview ? show.overview : "Who knows what happens"}</p>
+        <div class="btn-wrapper">
+            <a class="episodes-btn" href="/tvSeasonDetails/index.html?id=${showId}/season/${show.season_number}">See episodes</a>
+        </div>
+      </div>
+    </div>
+    `;
+
+    document.querySelector('#latest-heading').appendChild(heading);
+    document.querySelector('#latest-season').appendChild(div);
+    
+
+}
+
+async function displayShowSeasonDetails() {
+    const seasonId = window.location.search.split('=')[1];
+    const showId = seasonId.split('/')[0];
+
+    const getSeasonDetail = await fetchAPIData(`tv/${seasonId}`);
+
+    const getEpisodes = getSeasonDetail.episodes;
+
+    const prevPage = document.createElement('p');
+    prevPage.innerHTML = `
+    <a href="/tvDetails/index.html?id=${showId}"><i class="fa-solid fa-arrow-left"></i> Back to details</a>
+    `   
+    const seasonHeading = document.createElement('h3');
+    seasonHeading.innerHTML = `
+    Season ${getSeasonDetail.season_number}
+    `
+
+    getEpisodes.forEach( episode => {
+        const div = document.createElement('div');
+        div.classList.add('episode-container')
+        div.innerHTML = `
+        <div class="episode-img">
+        ${
+          episode.still_path
+           ? `<img src="https://image.tmdb.org/t/p/w500${episode.still_path}" alt="${episode.name}">` 
+           : `<img src="/placeholder.jpg" alt="${episode.name}">`
+        }
+        </div>
+        <div>
+          <div class="episode-heading">
+            <h5>Episode ${episode.episode_number}</h5>
+            <p>${episode.name}</p>
+          </div>
+          <div class="episode-details">
+            <ul>
+              <li>${episode.vote_average.toFixed(1)}/10 <i class="fa-regular fa-star"></i></li>
+              <li>${episode.runtime} minutes</li>
+              <li>${episode.air_date}</li>
+            </ul>
+          </div>
+          <div class="episode-overview">
+            <p>${episode.overview ? episode.overview : "Who knows what happens"}</p>
+          </div>
+        </div>
+        `;
+
+        document.querySelector('#episodes').appendChild(div);
+        
+    });
+
+    document.querySelector('#season-heading').appendChild(seasonHeading);
+    document.querySelector('#backto-details').appendChild(prevPage);
+
+}
+
 // Search Movies/Shows
 async function search() {
     const queryString = window.location.search;
@@ -493,7 +598,7 @@ async function search() {
 
     if(global.search.term != '' & global.search.term !== null) {
         const { results, total_pages, page, total_results } = await searchAPIData();
-        
+
         global.search.page = page;
         global.search.totalPages = total_pages;
         global.search.totalResults = total_results;
@@ -673,6 +778,10 @@ function init() {
             displayTVDetails();
             displayShowCredits();
             displayShowRecommendations();
+            displayShowLatestSeason();
+            break;
+        case'/tvSeasonDetails/index.html':
+            displayShowSeasonDetails();
             break;
         case'/search/index.html':
             search();

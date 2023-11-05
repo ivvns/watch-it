@@ -1,5 +1,5 @@
 import Swiper from 'swiper';
-import { Navigation, Autoplay } from 'swiper/modules';
+import { Navigation, Autoplay, Pagination } from 'swiper/modules';
 
 import 'swiper/css';
 
@@ -62,7 +62,7 @@ const classicSwiper = new Swiper('.classic-swiper', {
 
 const recSwiper = new Swiper('.rec-swiper', {
     modules: [Navigation, Autoplay],
-
+    
     breakpoints: {
         320: {
             slidesPerView: 2,
