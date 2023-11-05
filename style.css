@@ -29,7 +29,7 @@ img {
     @apply md:px-6 md:pb-24;
     @apply lg:px-4 m-auto;
 }
-
+  
 /*
 |------------------------------------------
 |  Header / Search Bar
@@ -74,12 +74,12 @@ header {
 }
 
 .submit-btn {
-  @apply bg-secondaryColor text-primaryColor text-2xl p-2;
+  @apply bg-secondaryColor text-primaryColor text-xl p-2;
 
 }
 
 .search-radio {
-    @apply absolute bottom-[-30px];
+    @apply absolute bottom-[-30px] md:left-0;
 }
 
 .search-radio label {
@@ -159,6 +159,10 @@ input[type='radio'] {
 |------------------------------------------
 */
 
+.search-form {
+    @apply flex justify-center;
+}
+
 .search-heading {
     @apply text-xl font-bold text-center pb-10;
     @apply lg:text-5xl
@@ -178,6 +182,10 @@ input[type='radio'] {
     @apply absolute bottom-0 left-0 bg-secondaryColor w-full p-2 opacity-90;
     @apply md:p-4;
 }
+
+.alert {
+    @apply absolute py-2 px-4 bg-red-600 left-[50%] top-[5%] translate-x-[-50%]  translate-y-[-50%] ;
+  }
 
 /*
 |------------------------------------------
