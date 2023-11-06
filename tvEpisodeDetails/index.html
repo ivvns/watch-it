@@ -6,10 +6,10 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-  <title>Search</title>
+  <title>Episode Detail</title>
 </head>
 <body>
-
+  
   <!-- Navigation & Search --> 
   <header>
     <div class="nav-container">
@@ -47,16 +47,14 @@
       </form>
     </div>
   </header>
-  
-  <section class="sections">
-    <h2 id="search-results-heading" class="search-heading"></h2>
-    <div class="search-wrapper" id="search-results">
-    </div>
-    <div id="pagination">
+
+  <!-- Season Episodes -->
+  <section class="details episode">
+    <div class="back" id="backto-season"></div>
+    <div id="episode">
     </div>
   </section>
-
-
+  
   <!-- Footer -->
   <footer>
     <p class="text-center">&copy; 2023 Watch-it by Ivan Somera</p>
@@ -65,5 +63,6 @@
   <div class="spinner"></div>
 
   <script type="module" src="/main.js"></script>
+  <script type="module" src="/swiper.js"></script>
 </body>
 </html>

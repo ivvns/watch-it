@@ -12,7 +12,7 @@ export default defineConfig({
         movieDetails: resolve(__dirname, 'movieDetails/index.html'),
         tvDetails: resolve(__dirname, 'tvDetails/index.html'),
         tvSeasonDetails: resolve(__dirname, 'tvSeasonDetails/index.html'),
-        
+        tvEpisodeDetails: resolve(__dirname, 'tvEpisodeDetails/index.html'),
       },
     },
   },

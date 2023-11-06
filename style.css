@@ -139,6 +139,10 @@ input[type='radio'] {
 |------------------------------------------
 */
 
+.classic-swiper {
+    @apply overflow-hidden;
+}
+
 .slider-text {
     @apply absolute bottom-0 left-0 bg-secondaryColor w-full p-2 opacity-90;
     @apply md:p-4;
@@ -193,13 +197,13 @@ input[type='radio'] {
 }
 
 .search-wrapper {
-    @apply flex flex-wrap justify-between w-full;
-    @apply md:gap-6;
+    @apply flex flex-wrap justify-center w-full gap-6;
+    @apply md:justify-between;
     @apply lg:gap-8;
 }
 
 .search-card {
-    @apply w-[300px] relative mb-4;
+    @apply max-w-[300px] relative mb-4;
 }
 
 .search-image {
@@ -223,7 +227,8 @@ input[type='radio'] {
 }
 
 .pagination {
-    @apply flex flex-col items-end;
+    @apply flex flex-col items-center;
+    @apply md:items-end;
 }
 
 .paginationBtn {
@@ -421,11 +426,12 @@ input[type='radio'] {
     @apply max-w-[800px];
 }
 
-.btn-wrapper {
-    @apply mt-6;
+.latest-layout {
+    @apply flex flex-col justify-center;
 }
+
 .episodes-btn {
-    @apply p-2 bg-secondaryColor hover:bg-primaryColor hover:text-secondaryColor transition ease-in-out;
+    @apply p-2 bg-secondaryColor hover:bg-primaryColor hover:text-secondaryColor transition ease-in-out w-fit mt-6;
 }
 
 
@@ -450,7 +456,7 @@ input[type='radio'] {
 }
 
 .episode-img {
-    @apply mb-2;
+    @apply mb-2 h-[200px] w-full;
     @apply md:max-w-[150px] md:mr-4;
     @apply lg:max-w-[300px];
 }
@@ -486,4 +492,40 @@ input[type='radio'] {
     @apply text-sm;
 }
 
+/*
+|------------------------------------------
+|  Show - Specific episode
+|------------------------------------------
+*/
+.oneEpisode-container {
+    @apply lg:flex;
+}
 
+.episode .episode-img {
+    @apply md:max-w-full h-[400px] md:mr-4; 
+    @apply lg:h-full lg:max-w-[500px];
+}
+
+.episode .episode-content {
+    @apply md:!max-w-[800px];
+}
+
+.episode .episode-content h2 {
+    @apply lg:text-2xl;
+}
+
+.episode .episode-content h4 {
+    @apply text-base font-light pb-1;
+}
+
+.episode .episode-content .episode-overview p {
+    @apply text-base pb-6;
+}
+
+.episode .episode-content .cast-crew {
+    @apply flex flex-wrap;
+}
+
+.cast-crew li {
+    @apply !pr-4 text-sm pb-1;
+}

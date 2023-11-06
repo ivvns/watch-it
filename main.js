@@ -380,7 +380,6 @@ async function displayOnAirShows() {
 async function displayTVDetails() {
     const showId = window.location.search.split('=')[1];
     const show = await fetchAPIData(`tv/${showId}`);
-    console.log(show);
 
     // Overlay for background image
     displayBackgroundImage('tv', show.backdrop_path);
@@ -506,23 +505,26 @@ async function displayShowLatestSeason() {
        : `<img src="/placeholder.jpg" alt="${show.name}">`
     }
     </div>
-    <div>
-      <div class="latest-heading">
-        <h5>Season ${show.season_number}</h5>
-        <p>${show.name}</p>
-      </div>
-      <div class="latest-details">
-        <ul>
-          <li>${show.vote_average.toFixed(1)}/10 <i class="fa-regular fa-star"></i></li>
-          <li>${show.episodes.length} Episodes</li>
-          <li>${show.air_date}</li>
-        </ul>
-      </div>
-      <div class="latest-overview">
-        <p>${show.overview ? show.overview : "Who knows what happens"}</p>
-        <div class="btn-wrapper">
-            <a class="episodes-btn" href="/tvSeasonDetails/index.html?id=${showId}/season/${show.season_number}">See episodes</a>
+    <div class="latest-layout">
+      <div>
+        <div class="latest-heading">
+            <h5>Season ${show.season_number}</h5>
+            <p>${show.name}</p>
         </div>
+        <div class="latest-details">
+            <ul>
+            <li>${show.vote_average.toFixed(1)}/10 <i class="fa-regular fa-star"></i></li>
+            <li>${show.episodes.length} Episodes</li>
+            <li>${show.air_date ? show.air_date : 'Coming soon' }</li>
+            </ul>
+        </div>
+        <div class="latest-overview">
+            <p>${show.overview ? show.overview : "Who knows what happens"}</p>
+            </div>
+        </div>
+            <div class="episodes-btn">
+                <a href="/tvSeasonDetails/index.html?id=${showId}/season/${show.season_number}">See episodes</a>
+            </div>
       </div>
     </div>
     `;
@@ -530,7 +532,6 @@ async function displayShowLatestSeason() {
     document.querySelector('#latest-heading').appendChild(heading);
     document.querySelector('#latest-season').appendChild(div);
     
-
 }
 
 async function displayShowSeasonDetails() {
@@ -538,11 +539,9 @@ async function displayShowSeasonDetails() {
     const showId = seasonId.split('/')[0];
 
     const getSeasonDetail = await fetchAPIData(`tv/${seasonId}`);
-
+    
     const getEpisodes = getSeasonDetail.episodes;
     
-  
-
     const prevPage = document.createElement('p');
     prevPage.innerHTML = `
     <a href="/tvDetails/index.html?id=${showId}"><i class="fa-solid fa-arrow-left"></i> Back to details</a>
@@ -551,17 +550,18 @@ async function displayShowSeasonDetails() {
     seasonHeading.innerHTML = `
     Season ${getSeasonDetail.season_number}
     `
-
     getEpisodes.forEach( episode => {
         const div = document.createElement('div');
         div.classList.add('episode-container')
         div.innerHTML = `
         <div class="episode-img">
+        <a href="/tvEpisodeDetails/index.html?id=${showId}/season/${episode.season_number}/episode/${episode.episode_number}">
         ${
           episode.still_path
            ? `<img src="https://image.tmdb.org/t/p/w500${episode.still_path}" alt="${episode.name}">` 
            : `<img src="/placeholder.jpg" alt="${episode.name}">`
         }
+        </a>
         </div>
         <div class="episode-content">
           <div class="episode-heading">
@@ -571,8 +571,8 @@ async function displayShowSeasonDetails() {
           <div class="episode-details">
             <ul>
               <li>${episode.vote_average.toFixed(1)}/10 <i class="fa-regular fa-star"></i></li>
-              <li>${episode.runtime} minutes</li>
-              <li>${episode.air_date}</li>
+              <li>${episode.runtime ? episode.runtime : '~'} minutes</li>
+              <li>${episode.air_date ? episode.air_date : 'Coming soon'}</li>
             </ul>
           </div>
           <div class="episode-overview">
@@ -580,14 +580,68 @@ async function displayShowSeasonDetails() {
           </div>
         </div>
         `;
-
+        document.querySelector('#season-heading').appendChild(seasonHeading);
         document.querySelector('#episodes').appendChild(div);
         
     });
 
-    document.querySelector('#season-heading').appendChild(seasonHeading);
     document.querySelector('#backto-details').appendChild(prevPage);
 
+}
+
+async function displayShowEpisodeDetails() {
+    const episodeId = window.location.search.split('=')[1];
+    const showId = episodeId.split('/')[0];
+    const seasonNumber = episodeId.split('/')[2];
+
+    const getEpisodeDetail = await fetchAPIData(`tv/${episodeId}`);
+    console.log(getEpisodeDetail);
+    const getCreditDetail = await fetchAPIData(`tv/${episodeId}/credits`);
+    
+    const getCast = getCreditDetail.cast.slice(0,5);
+    console.log(getCast);
+
+
+    const prevPage = document.createElement('p');
+    prevPage.innerHTML = `
+    <a href="/tvSeasonDetails/index.html?id=${showId}/season/${seasonNumber}"><i class="fa-solid fa-arrow-left"></i> Back to Season ${seasonNumber}</a>
+    `   
+    
+    const div = document.createElement('div');
+    div.classList.add('oneEpisode-container')
+    div.innerHTML = `
+    <div class="episode-img">
+        ${
+        getEpisodeDetail.still_path
+            ? `<img src="https://image.tmdb.org/t/p/w500${getEpisodeDetail.still_path}" alt="${getEpisodeDetail.name}">` 
+            : `<img src="/placeholder.jpg" alt="${getEpisodeDetail.name}">`
+        }
+    </div>
+        <div class="episode-content">
+            <h2>${getEpisodeDetail.name}</h2>
+            <div class="episode-details">
+                <ul>
+                    <li>${getEpisodeDetail.vote_average.toFixed(1)} / 10 <i class="fa-regular fa-star"></i></span></li>
+                    <li>${getEpisodeDetail.runtime} minutes</li>
+                    <li>${getEpisodeDetail.air_date}</li>
+                </ul>
+            </div>
+            <div class="episode-overview">
+                <p>${getEpisodeDetail.overview}</p>
+            </div>
+            <h4>Cast & Crew</h4>
+            <ul class="cast-crew">
+                ${getCast.map((cast) =>  `<li class="padding-right">${cast.name} as ${cast.character}</li>`).join('')}
+            </ul>
+            <ul class="cast-crew">
+                ${getEpisodeDetail.crew.map((crew) =>  `<li class="padding-right">${crew.name}</li>`).join('')}
+            </ul>
+        <div>
+    </div>
+    `;
+
+    document.querySelector('#backto-season').appendChild(prevPage)
+    document.querySelector('#episode').appendChild(div);
 }
 
 // Search Movies/Shows
@@ -784,6 +838,9 @@ function init() {
             break;
         case'/tvSeasonDetails/index.html':
             displayShowSeasonDetails();
+            break;
+        case'/tvEpisodeDetails/index.html':
+            displayShowEpisodeDetails();
             break;
         case'/search/index.html':
             search();

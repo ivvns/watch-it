@@ -8,6 +8,7 @@ export default {
     "./movieDetails/index.html",
     "./tvDetails/index.html",
     "./tvSeasonDetails/index.html",
+    "./tvEpisodeDetails/index.html",
     "./*.js",
   ],
   screen: {
