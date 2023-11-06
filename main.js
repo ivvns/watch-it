@@ -58,7 +58,7 @@ async function displayPopularMovies() {
         const div = document.createElement('div');
         div.classList.add('swiper-slide');
         div.innerHTML = `
-        <a href="/movieDetails/index.html?id=${movie.id}">
+        <a href="/moviedetails/index.html?id=${movie.id}">
             ${
                 movie.poster_path
                  ? `<img src="https://image.tmdb.org/t/p/w500${movie.poster_path}" alt="${movie.title}">` 
@@ -82,7 +82,7 @@ async function displayTrendingMovies() {
         const div = document.createElement('div');
         div.classList.add('swiper-slide');
         div.innerHTML = `
-        <a href="/movieDetails/index.html?id=${movie.id}">
+        <a href="/moviedetails/index.html?id=${movie.id}">
         ${
             movie.poster_path
              ? `<img src="https://image.tmdb.org/t/p/w500${movie.poster_path}" alt="${movie.title}">` 
@@ -105,7 +105,7 @@ async function displayTopRatedMovies() {
         const div = document.createElement('div');
         div.classList.add('swiper-slide');
         div.innerHTML = `
-        <a href="/movieDetails/index.html?id=${movie.id}">
+        <a href="/moviedetails/index.html?id=${movie.id}">
         ${
             movie.poster_path
              ? `<img src="https://image.tmdb.org/t/p/w500${movie.poster_path}" alt="${movie.title}">` 
@@ -128,7 +128,7 @@ async function displayUpcomingMovies() {
         const div = document.createElement('div');
         div.classList.add('swiper-slide');
         div.innerHTML = `
-        <a href="/movieDetails/index.html?id=${movie.id}">
+        <a href="/moviedetails/index.html?id=${movie.id}">
         ${
             movie.poster_path
              ? `<img src="https://image.tmdb.org/t/p/w500${movie.poster_path}" alt="${movie.title}">` 
@@ -235,7 +235,7 @@ async function displayMovieRecommendations() {
 
         div.classList.add('swiper-slide');
         div.innerHTML = `
-        <a href="/movieDetails/index.html?id=${movie.id}">
+        <a href="/moviedetails/index.html?id=${movie.id}">
         ${
             movie.poster_path
              ? `<img src="https://image.tmdb.org/t/p/w500${movie.poster_path}" alt="${movie.title}">` 
@@ -267,7 +267,7 @@ async function displayMovieSimilar() {
 
         div.classList.add('swiper-slide');
         div.innerHTML = `
-        <a href="/movieDetails/index.html?id=${movie.id}">
+        <a href="/moviedetails/index.html?id=${movie.id}">
         ${
             movie.poster_path
              ? `<img src="https://image.tmdb.org/t/p/w500${movie.poster_path}" alt="${movie.title}">` 
@@ -292,7 +292,7 @@ async function displayTrendingShows() {
         const div = document.createElement('div');
         div.classList.add('swiper-slide');
         div.innerHTML = `
-        <a href="/tvDetails/index.html?id=${show.id}">
+        <a href="/tvdetails/index.html?id=${show.id}">
         ${
             show.poster_path
              ? `<img src="https://image.tmdb.org/t/p/w500${show.poster_path}" alt="${show.name}">` 
@@ -315,7 +315,7 @@ async function displayTopRatedShows() {
         const div = document.createElement('div');
         div.classList.add('swiper-slide');
         div.innerHTML = `
-        <a href="/tvDetails/index.html?id=${show.id}">
+        <a href="/tvdetails/index.html?id=${show.id}">
         ${
             show.poster_path
              ? `<img src="https://image.tmdb.org/t/p/w500${show.poster_path}" alt="${show.name}">` 
@@ -338,7 +338,7 @@ async function displayPopularShows() {
         const div = document.createElement('div');
         div.classList.add('swiper-slide');
         div.innerHTML = `
-        <a href="/tvDetails/index.html?id=${show.id}">
+        <a href="/tvdetails/index.html?id=${show.id}">
         ${
             show.poster_path
              ? `<img src="https://image.tmdb.org/t/p/w500${show.poster_path}" alt="${show.name}">` 
@@ -361,7 +361,7 @@ async function displayOnAirShows() {
         const div = document.createElement('div');
         div.classList.add('swiper-slide');
         div.innerHTML = `
-        <a href="/tvDetails/index.html?id=${show.id}">
+        <a href="/tvdetails/index.html?id=${show.id}">
         ${
             show.poster_path
              ? `<img src="https://image.tmdb.org/t/p/w500${show.poster_path}" alt="${show.name}">` 
@@ -380,7 +380,7 @@ async function displayOnAirShows() {
 async function displayTVDetails() {
     const showId = window.location.search.split('=')[1];
     const show = await fetchAPIData(`tv/${showId}`);
-
+    
     // Overlay for background image
     displayBackgroundImage('tv', show.backdrop_path);
 
@@ -465,7 +465,7 @@ async function displayShowRecommendations() {
 
         div.classList.add('swiper-slide');
         div.innerHTML = `
-        <a href="/tvDetails/index.html?id=${show.id}">
+        <a href="/tvdetails/index.html?id=${show.id}">
         ${
             show.poster_path
              ? `<img src="https://image.tmdb.org/t/p/w500${show.poster_path}" alt="${show.name}">` 
@@ -524,7 +524,7 @@ async function displayShowLatestSeason() {
             </div>
         </div>
             <div class="episodes-btn">
-                <a href="/tvSeasonDetails/index.html?id=${showId}/season/${show.season_number}">See episodes</a>
+                <a href="/tvseasondetails/index.html?id=${showId}/season/${show.season_number}">See episodes</a>
             </div>
       </div>
     </div>
@@ -541,7 +541,7 @@ async function displayAllSeasons() {
     const getShowDetails = await fetchAPIData(`tv/${showId}`);
 
     const getSeasons = getShowDetails.seasons;
-    
+
     const heading = document.createElement('h4');
     heading.innerHTML = `Seasons `;
     
@@ -550,7 +550,7 @@ async function displayAllSeasons() {
 
         div.classList.add('swiper-slide');
         div.innerHTML = `
-        <a href="/tvSeasonDetails/index.html?id=${showId}/season/${getSeasons.season_number}">
+        <a href="/tvseasondetails/index.html?id=${showId}/season/${season.season_number}">
         ${
             season.poster_path
              ? `<img src="https://image.tmdb.org/t/p/w500${season.poster_path}" alt="${season.name}">` 
@@ -575,12 +575,12 @@ async function displayShowSeasonDetails() {
     const showId = seasonId.split('/')[0];
 
     const getSeasonDetail = await fetchAPIData(`tv/${seasonId}`);
-
-    const getEpisodes = getSeasonDetail.episodes;
     
+    const getEpisodes = getSeasonDetail.episodes;
+   
     const prevPage = document.createElement('p');
     prevPage.innerHTML = `
-    <a href="/tvDetails/index.html?id=${showId}"><i class="fa-solid fa-arrow-left"></i> Back to details</a>
+    <a href="/tvdetails/index.html?id=${showId}"><i class="fa-solid fa-arrow-left"></i> Back to details</a>
     `   
     const seasonHeading = document.createElement('h3');
     seasonHeading.innerHTML = `
@@ -591,7 +591,7 @@ async function displayShowSeasonDetails() {
         div.classList.add('episode-container')
         div.innerHTML = `
         <div class="episode-img">
-        <a href="/tvEpisodeDetails/index.html?id=${showId}/season/${episode.season_number}/episode/${episode.episode_number}">
+        <a href="/tvepisodedetails/index.html?id=${showId}/season/${episode.season_number}/episode/${episode.episode_number}">
         ${
           episode.still_path
            ? `<img src="https://image.tmdb.org/t/p/w500${episode.still_path}" alt="${episode.name}">` 
@@ -638,7 +638,7 @@ async function displayShowEpisodeDetails() {
 
     const prevPage = document.createElement('p');
     prevPage.innerHTML = `
-    <a href="/tvSeasonDetails/index.html?id=${showId}/season/${seasonNumber}"><i class="fa-solid fa-arrow-left"></i> Back to Season ${seasonNumber}</a>
+    <a href="/tvseasondetails/index.html?id=${showId}/season/${seasonNumber}"><i class="fa-solid fa-arrow-left"></i> Back to Season ${seasonNumber}</a>
     `   
     
     const div = document.createElement('div');
@@ -858,23 +858,23 @@ function init() {
             displayPopularShows();
             displayOnAirShows();
                 break;
-        case'/movieDetails/index.html':
+        case'/moviedetails/index.html':
             displayMovieDetails();
             displayMovieCredits();
             displayMovieRecommendations();
             displayMovieSimilar();
             break;
-        case'/tvDetails/index.html':
+        case'/tvdetails/index.html':
             displayTVDetails();
             displayShowCredits();
             displayShowLatestSeason();
             displayAllSeasons();
             displayShowRecommendations();
             break;
-        case'/tvSeasonDetails/index.html':
+        case'/tvseasondetails/index.html':
             displayShowSeasonDetails();
             break;
-        case'/tvEpisodeDetails/index.html':
+        case'/tvepisodedetails/index.html':
             displayShowEpisodeDetails();
             break;
         case'/search/index.html':
