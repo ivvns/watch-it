@@ -720,7 +720,7 @@ function displaySearchResults(results) {
         div.classList.add('search-card');
 
         div.innerHTML = `
-        <a href="/${global.search.type}Details/index.html?id=${result.id}">
+        <a href="/${global.search.type}details/index.html?id=${result.id}">
             ${
                 result.poster_path 
                 ? `<img src="https://image.tmdb.org/t/p/w500/${result.poster_path}" alt="${global.search.type === 'movie' ? result.title : result.name}"/>`
