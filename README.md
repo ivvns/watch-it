@@ -7,7 +7,11 @@ The website takes data from TMDB api and displays a collection of movies and sho
 App functionality:
 
 -Users are able to navigate through terms such as popular, trending, and top rated movies/shows and see additional details when clicked
+
+
 -For TV shows there are additional features such as viewing the current episodes of the season and seeing a list of current and past seasons. 
+
+
 -Search function in the navigation which takes the users to a dedicated search results page with all the results as well as pagination.
 
 ## To run the app
