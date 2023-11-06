@@ -487,6 +487,7 @@ async function displayShowLatestSeason() {
 
     const getShowDetails = await fetchAPIData(`tv/${showId}`);
     const getSeasons = getShowDetails.seasons;
+
     const getCurrSeason = getSeasons[getSeasons.length - 1];
     const getSeasonNumber = getCurrSeason.season_number;
 
@@ -534,12 +535,47 @@ async function displayShowLatestSeason() {
     
 }
 
+async function displayAllSeasons() {
+    const showId = window.location.search.split('=')[1];
+
+    const getShowDetails = await fetchAPIData(`tv/${showId}`);
+
+    const getSeasons = getShowDetails.seasons;
+    
+    const heading = document.createElement('h4');
+    heading.innerHTML = `Seasons `;
+    
+    getSeasons.forEach(season => {
+        const div = document.createElement('div');
+
+        div.classList.add('swiper-slide');
+        div.innerHTML = `
+        <a href="/tvSeasonDetails/index.html?id=${showId}/season/${getSeasons.season_number}">
+        ${
+            season.poster_path
+             ? `<img src="https://image.tmdb.org/t/p/w500${season.poster_path}" alt="${season.name}">` 
+             : `<img src="/placeholder.jpg" alt="${season.name}">`
+        }
+        <div class="slider-text">
+          <ul class="season-details">
+            <li>${season.name}</li>
+            <li>${season.episode_count} Episodes</li>
+            <li>${season.air_date ? season.air_date : 'Some time ago'}</li>
+          </ul>
+        </div>
+        `;
+
+        document.querySelector('#season-heading').appendChild(heading);
+        document.querySelector('#all-seasons').appendChild(div);
+    });
+}
+
 async function displayShowSeasonDetails() {
     const seasonId = window.location.search.split('=')[1];
     const showId = seasonId.split('/')[0];
 
     const getSeasonDetail = await fetchAPIData(`tv/${seasonId}`);
-    
+
     const getEpisodes = getSeasonDetail.episodes;
     
     const prevPage = document.createElement('p');
@@ -595,12 +631,10 @@ async function displayShowEpisodeDetails() {
     const seasonNumber = episodeId.split('/')[2];
 
     const getEpisodeDetail = await fetchAPIData(`tv/${episodeId}`);
-    console.log(getEpisodeDetail);
+
     const getCreditDetail = await fetchAPIData(`tv/${episodeId}/credits`);
     
     const getCast = getCreditDetail.cast.slice(0,5);
-    console.log(getCast);
-
 
     const prevPage = document.createElement('p');
     prevPage.innerHTML = `
@@ -833,8 +867,9 @@ function init() {
         case'/tvDetails/index.html':
             displayTVDetails();
             displayShowCredits();
-            displayShowRecommendations();
             displayShowLatestSeason();
+            displayAllSeasons();
+            displayShowRecommendations();
             break;
         case'/tvSeasonDetails/index.html':
             displayShowSeasonDetails();

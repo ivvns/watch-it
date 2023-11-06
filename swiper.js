@@ -74,7 +74,7 @@ const recSwiper = new Swiper('.rec-swiper', {
             spaceBetween: 30,
         },
         1024: {
-            slidesPerView: 5,
+            slidesPerView: 6,
             spaceBetween: 40,
         },
     },
@@ -106,6 +106,30 @@ const similarSwiper = new Swiper('.similar-swiper', {
     loop: true,
 
 });
+
+const seasonSwiper = new Swiper('.seasons-swiper', {
+    modules: [Navigation, Autoplay],
+
+    breakpoints: {
+        320: {
+            slidesPerView: 1,
+            spaceBetween: 20,
+        },
+        768: {
+            slidesPerView: 3,
+            spaceBetween: 30,
+        },
+        1024: {
+            slidesPerView: 5,
+            spaceBetween: 40,
+        },
+    },
+
+    direction: 'horizontal',
+    loop: true,
+
+});
+
 
 
 

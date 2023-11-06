@@ -39,7 +39,11 @@ footer {
   
 }
 
-  
+.similar-swiper, .rec-swiper, .seasons-swiper {
+    @apply overflow-hidden;
+}
+
+
 /*
 |------------------------------------------
 |  Header / Search Bar
@@ -339,6 +343,23 @@ input[type='radio'] {
     @apply flex;
 }
 
+/* All Seasons */
+.all-season h4{
+    @apply text-lg pb-6;
+}
+
+.all-season .season-details li:first-child{
+    @apply text-lg;
+}
+
+.all-season .season-details li:nth-child(2){
+    @apply text-base;
+}
+
+.all-season .season-details li:last-child {
+    @apply font-light text-sm;
+}
+
 /* Credits */
 
 .credits {
@@ -346,7 +367,7 @@ input[type='radio'] {
 }
 
 .credits-cast-crew {
-    @apply md:flex md:py-[4px];
+    @apply md:flex md:flex-wrap md:py-[4px];
 }
 
 .credits h4{
@@ -375,10 +396,6 @@ input[type='radio'] {
 }
 
 /* Similar */
-
-.similar-swiper, .rec-swiper {
-    @apply overflow-hidden;
-}
 
 .similar h4 {
     @apply pb-6 text-base;
